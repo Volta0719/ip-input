@@ -2,28 +2,26 @@
  * @Author: 24min
  * @Date: 2021-12-04 13:12:44
  * @LastEditors: 24min
- * @LastEditTime: 2021-12-04 13:33:43
+ * @LastEditTime: 2021-12-04 20:07:44
  * @FilePath: \ip-input\src\App.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
 -->
 <template>
   <div id="app">
-    <a-input></a-input>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <fan-ip-input></fan-ip-input>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import fanIpInput from "./components/ipInput.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    fanIpInput,
+  },
+};
 </script>
 
 <style lang="less">
