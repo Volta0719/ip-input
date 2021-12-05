@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: 24min
- * @LastEditTime: 2021-12-05 09:35:04
+ * @LastEditTime: 2021-12-05 10:14:58
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -32,14 +32,14 @@
 
 <script>
 export default {
-  name: "jkIpInput",
+  name: "fanIpInput",
   data() {
     return {
       blurIndex: 0, //record the last blur input
       isCodeFoucus: false, // is the code to foucs the input
       shouldLockKeyupEvent: false,
       shouldRemoveText: "",
-      ip: [{ value: 0 }, { value: 123 }, { value: 255 }, { value: 0 }],
+      ip: [{ value: 0 }, { value: 0 }, { value: 0 }, { value: 0 }],
       firstFlag: [
         { start: true, end: true },
         { start: true, end: true },
