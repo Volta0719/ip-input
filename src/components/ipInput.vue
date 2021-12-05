@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: 24min
- * @LastEditTime: 2021-12-05 09:26:07
+ * @LastEditTime: 2021-12-05 09:35:04
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -12,7 +12,7 @@
     <li v-for="(item, index) in ip" :key="index" class="fan-ip-item">
       <a-input
         size="small"
-        v-model="item.value"
+        v-model.number="item.value"
         class="fan-ip-input"
         ref="ipInput"
         :maxLength="3"
@@ -150,7 +150,10 @@ export default {
     },
     blurInput(e, index) {
       //   const value
-      console.log("blurInput", e);
+      const { value } = e.currentTarget;
+      if (+value > 255) {
+        this.ip[index].value = 255;
+      }
       this.blurIndex = index;
       this.firstFlag[index].end = true;
       this.firstFlag[index].start = true;
