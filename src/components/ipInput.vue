@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: 24min
- * @LastEditTime: 2021-12-04 21:39:36
+ * @LastEditTime: 2021-12-05 09:26:07
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -71,11 +71,13 @@ export default {
   },
   methods: {
     changeIp(e, index) {
-      console.log("change", e);
+      console.log("changeIp", e);
       // console.log('e.currentTarget.selectionStart',e.currentTarget.selectionStart)
       if (this.shouldRemoveText) {
         const { value } = e.currentTarget;
-        if (value.indexOf(this.shouldRemoveText) >= 0) {
+        const iindex = value.indexOf(this.shouldRemoveText);
+        console.log("removetext", value.indexOf(this.shouldRemoveText));
+        if (iindex >= 0) {
           this.ip[index].value = value.replace(
             new RegExp(this.shouldRemoveText, "g"),
             ""
@@ -109,6 +111,7 @@ export default {
       // }
     },
     focusInput(e, index) {
+      console.log("focusInput", e);
       if (this.isCodeFoucus) {
         if (index > this.blurIndex) {
           if (index === 3 && this.blurIndex === 0) {
@@ -147,16 +150,16 @@ export default {
     },
     blurInput(e, index) {
       //   const value
+      console.log("blurInput", e);
       this.blurIndex = index;
       this.firstFlag[index].end = true;
       this.firstFlag[index].start = true;
-      console.log("blurInput", JSON.stringify(this.firstFlag));
     },
     keydown(e, index) {
       console.log("keydown", e);
       const allowKey = [
         "Backspace",
-        "Period",
+        // "Period",
         "ArrowRight",
         "ArrowLeft",
         "Digit1",
@@ -168,7 +171,7 @@ export default {
         "Digit7",
         "Digit8",
         "Digit9",
-        "Digit10",
+        "Digit0",
       ];
       if (!allowKey.includes(e.code)) {
         e.preventDefault();
@@ -184,7 +187,8 @@ export default {
     },
     pressKey(e, index, item) {
       if (this.shouldLockKeyupEvent) return;
-      console.log("pressKey", e.code);
+      if (e.keyCode === 229) return; // Filtration period(。)
+      console.log("pressKey", e);
       switch (e.code) {
         case "Backspace":
           if (e.currentTarget.selectionStart === 0) {
