@@ -1,14 +1,26 @@
 {
     "name": "fan-ip-input",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "private": false,
     "description": "ip input of vue2",
-    "keyword": "vue vue2 ip input fan",
+    "keywords": [
+        "vue",
+        "vue2",
+        "ip",
+        "input",
+        "fan"
+    ],
     "main": "lib/fanIpinput.umd.min.js",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/24min/ip-input"
+    },
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lib": "vue-cli-service build --target lib --name fanIpinput --dest lib src/components/index.js"
+        "lib": "vue-cli-service build --target lib --name fanIpinput --dest lib src/components/index.js",
+        "push": "npm run lib && npm login && npm publish"
     },
     "dependencies": {
         "ant-design-vue": "^1.7.8",
