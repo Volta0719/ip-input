@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: 24min
- * @LastEditTime: 2021-12-05 10:14:58
+ * @LastEditTime: 2021-12-05 10:54:27
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { Input } from "ant-design-vue";
 export default {
   name: "fanIpInput",
   data() {
@@ -47,6 +48,9 @@ export default {
         { start: true, end: true },
       ],
     };
+  },
+  components: {
+    aInput: Input,
   },
   props: {
     value: {
