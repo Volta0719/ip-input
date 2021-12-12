@@ -1,6 +1,6 @@
 {
     "name": "fan-ip-input",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "private": false,
     "description": "Imitation of Microsoft IP input box of vue2",
     "keywords": [
@@ -20,6 +20,7 @@
     "bugs": {
         "url": "https://github.com/24min/ip-input/issues"
     },
+    "homepage": "https://24min.github.io/ip-input/dist/",
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
