@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: 24min
- * @LastEditTime: 2021-12-05 10:54:27
+ * @LastEditTime: 2021-12-12 14:13:58
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -23,7 +23,6 @@
         @compositionstart="compositionstart($event, index)"
         @compositionend="compositionend($event, index)"
         @change="changeIp($event, index)"
-        @click.native="clickIP($event, index)"
       ></a-input>
       <span class="fan-ip-dot" v-if="index < 3"></span>
     </li>
@@ -75,12 +74,9 @@ export default {
   },
   methods: {
     changeIp(e, index) {
-      console.log("changeIp", e);
-      // console.log('e.currentTarget.selectionStart',e.currentTarget.selectionStart)
       if (this.shouldRemoveText) {
         const { value } = e.currentTarget;
         const iindex = value.indexOf(this.shouldRemoveText);
-        console.log("removetext", value.indexOf(this.shouldRemoveText));
         if (iindex >= 0) {
           this.ip[index].value = value.replace(
             new RegExp(this.shouldRemoveText, "g"),
@@ -97,25 +93,28 @@ export default {
           this.firstFlag[index === 3 ? 0 : index + 1].start = false;
           this.$refs.ipInput[index === 3 ? 0 : index + 1].focus();
         }
+        if (e.currentTarget.selectionStart !== 0) {
+          //https://github.com/24min/ip-input/issues/1
+          this.firstFlag[index].start = true;
+        }
         const resultIp = this.ip.map((ip) => ip.value).join(".");
         this.$emit("result", resultIp);
       }
     },
-    clickIP(e, index) {
-      console.log("index", e.currentTarget.selectionStart);
-      // if (this.ip[index].value.length === e.currentTarget.selectionStart) {
-      //   this.firstFlag[index].end = false;
-      // } else {
-      //   this.firstFlag[index].end = true;
-      // }
-      // if (e.currentTarget.selectionStart == 0) {
-      //   this.firstFlag[index].start = false;
-      // } else {
-      //   this.firstFlag[index].start = true;
-      // }
-    },
+    // clickIP(e, index) {
+    //   console.log("index", e.currentTarget.selectionStart);
+    //   // if (this.ip[index].value.length === e.currentTarget.selectionStart) {
+    //   //   this.firstFlag[index].end = false;
+    //   // } else {
+    //   //   this.firstFlag[index].end = true;
+    //   // }
+    //   // if (e.currentTarget.selectionStart == 0) {
+    //   //   this.firstFlag[index].start = false;
+    //   // } else {
+    //   //   this.firstFlag[index].start = true;
+    //   // }
+    // },
     focusInput(e, index) {
-      console.log("focusInput", e);
       if (this.isCodeFoucus) {
         if (index > this.blurIndex) {
           if (index === 3 && this.blurIndex === 0) {
@@ -139,7 +138,6 @@ export default {
           }
         }
         this.isCodeFoucus = false;
-        // console.log("isCodeFoucusTrue", JSON.stringify(this.firstFlag));
       } else {
         setTimeout(() => {
           let currentEvent = this.$refs.ipInput[index].$el;
@@ -163,7 +161,6 @@ export default {
       this.firstFlag[index].start = true;
     },
     keydown(e, index) {
-      console.log("keydown", e);
       const allowKey = [
         "Backspace",
         // "Period",
@@ -185,17 +182,14 @@ export default {
       }
     },
     compositionstart(e, index) {
-      console.log("compositionstart", e);
       this.shouldLockKeyupEvent = true;
     },
     compositionend(e, index) {
-      console.log("compositionend", e);
       this.shouldRemoveText = e.data;
     },
     pressKey(e, index, item) {
       if (this.shouldLockKeyupEvent) return;
       if (e.keyCode === 229) return; // Filtration period(。)
-      console.log("pressKey", e);
       switch (e.code) {
         case "Backspace":
           if (e.currentTarget.selectionStart === 0) {

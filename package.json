@@ -1,20 +1,24 @@
 {
     "name": "fan-ip-input",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "private": false,
-    "description": "ip input of vue2",
+    "description": "Imitation of Microsoft IP input box of vue2",
     "keywords": [
         "vue",
         "vue2",
         "ip",
         "input",
-        "fan"
+        "fan",
+        "frontend"
     ],
     "main": "lib/fanIpinput.umd.min.js",
     "license": "MIT",
     "repository": {
         "type": "git",
         "uri": "https://github.com/24min/ip-input"
+    },
+    "bugs": {
+        "url": "https://github.com/24min/ip-input/issues"
     },
     "scripts": {
         "serve": "vue-cli-service serve",
