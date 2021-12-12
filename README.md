@@ -2,9 +2,17 @@
 
 Imitation of Microsoft IP input box
 
-# Source Code
+# Feature
 
-[24min/ip-input: Imitation of Microsoft IP input box (github.com)](https://github.com/24min/ip-input)
+Imitation of Microsoft IP input box,Depends on the vue2,Using the `Ant design vue`'s components 【`<a-input>`】.
+
+* The mouse cursor moves in turn when press Arrow key
+* Unable to enter characters other than numbers
+* Compatibility processing under Chinese input method removes unallowed input character
+* Automatically focus to the next input box when the number in the input box is 3 digits
+* Numbers above 255 are converted to 255 when out of focus
+* When the mouse cursor is at the end of the input, press the period key to jump to the next input box
+* May be more...
 
 # How to use
 
@@ -45,20 +53,11 @@ export default {
   }
 }
 </script>
-
 ```
 
-# Feature
+# Source Code
 
-Imitation of Microsoft IP input box,Depends on the vue2,Using the `Ant design vue`'s components 【`<a-input>`】.
-
-* The mouse cursor moves in turn when press Arrow key
-* Unable to enter characters other than numbers
-* Compatibility processing under Chinese input method removes unallowed input character
-* Automatically focus to the next input box when the number in the input box is 3 digits
-* Numbers above 255 are converted to 255 when out of focus
-* When the mouse cursor is at the end of the input, press the period key to jump to the next input box
-* May be more...
+[24min/ip-input: Imitation of Microsoft IP input box (github.com)](https://github.com/24min/ip-input)
 
 # Online Example
 
