@@ -24,7 +24,8 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lib": "vue-cli-service build --target lib --name fanIpinput --dest lib src/components/index.js",
-        "push": "npm run lib && npm login && npm publish"
+        "push": "npm run lib && npm login && npm publish",
+        "pages": "git subtree push --prefix dist origin gh-pages"
     },
     "dependencies": {
         "ant-design-vue": "^1.7.8",
