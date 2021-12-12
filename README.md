@@ -48,10 +48,9 @@ export default {
 
 ```
 
-
 # Feature
 
-Imitation of Microsoft IP input box,Depends on the vue2,Using the `antd design vue`'s components 【`<a-input>`】.
+Imitation of Microsoft IP input box,Depends on the vue2,Using the `Ant design vue`'s components 【`<a-input>`】.
 
 * The mouse cursor moves in turn when press Arrow key
 * Unable to enter characters other than numbers
