@@ -31,15 +31,6 @@ Vue.use(fanIpInput)
 `app.vue:`
 
 ```vue
-<!--
- * @Author: 24min
- * @Date: 2021-06-26 09:55:41
- * @LastEditors: 24min
- * @LastEditTime: 2021-12-05 10:51:11
- * @FilePath: \test\test111\src\App.vue
- * @note: If it ain't broke, don't fix it.🍤
- * @Description: to bo continued...
--->
 <template>
   <div id="app">
     <fan-ip-input v-model="ip"></fan-ip-input>
@@ -51,6 +42,28 @@ export default {
   data(){
     return{ip:'1.2.3.4'}
   }
+}
+</script>
+```
+
+Also，If you want to introduce it separately,just like this:
+
+```
+,<template>
+  <div id="app">
+    <demo-input v-model="ip"></demo-input>
+  </div>
+</template>
+<script>
+import ipInput from 'fan-ip-input'
+export default {
+  name:'app',
+  data(){
+    return{ip:'1.2.3.4'}
+  },
+components:{
+  demoInput:ipInput.fanIpInput,
+ }
 }
 </script>
 ```
