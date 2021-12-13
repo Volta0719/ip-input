@@ -1,6 +1,6 @@
 {
     "name": "fan-ip-input",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "private": false,
     "description": "Imitation of Microsoft IP input box of vue2",
     "keywords": [
@@ -15,7 +15,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "uri": "https://github.com/24min/ip-input"
+        "url": "https://github.com/24min/ip-input"
     },
     "bugs": {
         "url": "https://github.com/24min/ip-input/issues"

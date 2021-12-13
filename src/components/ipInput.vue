@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: 24min
- * @LastEditTime: 2021-12-12 14:13:58
+ * @LastEditTime: 2021-12-13 20:50:59
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -210,6 +210,9 @@ export default {
         //   this.$refs.ipInput[index === 3 ? 0 : index + 1].focus();
         //   break;
         case "Period":
+          if (e.currentTarget.selectionStart === 0) {
+            break;
+          }
         case "ArrowRight":
           if (item.value.toString().length === e.currentTarget.selectionStart) {
             if (!this.firstFlag[index].end) {

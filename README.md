@@ -49,7 +49,7 @@ export default {
 Also，If you want to introduce it separately,just like this:
 
 ```
-,<template>
+<template>
   <div id="app">
     <demo-input v-model="ip"></demo-input>
   </div>
