@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: fanjf
- * @LastEditTime: 2021-12-16 09:54:28
+ * @LastEditTime: 2021-12-16 10:30:04
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -191,7 +191,8 @@ export default {
       this.shouldLockKeyupEvent = true;
     },
     compositionend(e, index) {
-      this.shouldRemoveText = e.data;
+      let len = this.ip[index].value.toString().length;
+      this.shouldRemoveText = e.data.substring(0, 3 - len);
     },
     pressKey(e, index, item) {
       if (this.shouldLockKeyupEvent) return;
