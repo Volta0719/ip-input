@@ -1,8 +1,8 @@
 <!--
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
- * @LastEditors: 24min
- * @LastEditTime: 2021-12-13 20:50:59
+ * @LastEditors: fanjf
+ * @LastEditTime: 2021-12-16 09:54:28
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -46,6 +46,7 @@ export default {
         { start: true, end: true },
         { start: true, end: true },
       ],
+      prenentKeycode: "", //Record a Keyboard key[code] When In chinese input method,the Peroid trigger twice pressKey() method
     };
   },
   components: {
@@ -166,18 +167,23 @@ export default {
         // "Period",
         "ArrowRight",
         "ArrowLeft",
-        "Digit1",
-        "Digit2",
-        "Digit3",
-        "Digit4",
-        "Digit5",
-        "Digit6",
-        "Digit7",
-        "Digit8",
-        "Digit9",
-        "Digit0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "0",
       ];
-      if (!allowKey.includes(e.code)) {
+      if (e.key === "Process") {
+        this.prenentKeycode = e.code;
+      } else {
+        this.prenentKeycode = "";
+      }
+      if (!allowKey.includes(e.key)) {
         e.preventDefault();
       }
     },
@@ -189,8 +195,8 @@ export default {
     },
     pressKey(e, index, item) {
       if (this.shouldLockKeyupEvent) return;
-      if (e.keyCode === 229) return; // Filtration period(。)
-      switch (e.code) {
+      if (this.prenentKeycode === e.code) return;
+      switch (e.key) {
         case "Backspace":
           if (e.currentTarget.selectionStart === 0) {
             if (!this.firstFlag[index].start) {
@@ -209,11 +215,12 @@ export default {
         //   this.isCodeFoucus = true;
         //   this.$refs.ipInput[index === 3 ? 0 : index + 1].focus();
         //   break;
-        case "Period":
+        case ".":
           if (e.currentTarget.selectionStart === 0) {
             break;
           }
         case "ArrowRight":
+          console.log("ArrowRight");
           if (item.value.toString().length === e.currentTarget.selectionStart) {
             if (!this.firstFlag[index].end) {
               this.isCodeFoucus = true;
