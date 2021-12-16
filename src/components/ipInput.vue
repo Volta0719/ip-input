@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: fanjf
- * @LastEditTime: 2021-12-16 14:28:37
+ * @LastEditTime: 2021-12-16 17:07:45
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -76,6 +76,7 @@ export default {
   },
   methods: {
     changeIp(e, index) {
+      console.log("changeIp", e);
       if (this.shouldRemoveText) {
         const { value } = e.currentTarget;
         const iindex = value.indexOf(this.shouldRemoveText);
@@ -148,7 +149,10 @@ export default {
       } else {
         setTimeout(() => {
           let currentEvent = this.$refs.ipInput[index].$el;
-          if (this.ip[index].value.length === currentEvent.selectionStart) {
+          if (
+            this.ip[index].value.toString().length ===
+            currentEvent.selectionStart
+          ) {
             this.firstFlag[index].end = false;
           }
           if (currentEvent.selectionStart == 0) {
@@ -159,6 +163,7 @@ export default {
     },
     blurInput(e, index) {
       //   const value
+      console.log("blurInput", e);
       const { value } = e.currentTarget;
       if (+value > 255) {
         this.ip[index].value = 255;
@@ -184,22 +189,21 @@ export default {
         "9",
         "0",
       ];
-      if (e.key === "Process") {
-        this.prenentKeycode = e.code;
-      } else {
-        this.prenentKeycode = "";
-      }
+      this.prenentKeycode = e.key === "Process" ? e.code : "";
       if (!allowKey.includes(e.key)) {
         e.preventDefault();
       }
     },
     compositionstart(e, index) {
+      console.log("compositionstart", e);
       this.beforePosition = e.currentTarget.selectionStart;
       this.shouldLockKeyupEvent = true;
     },
     compositionend(e, index) {
+      console.log("compositionend", e);
       let len = this.ip[index].value.toString().length;
       this.shouldRemoveText = e.data.substring(0, 3 - len);
+      console.log("this.shouldRemoveText", this.shouldRemoveText);
       if (!this.shouldRemoveText) {
         e.currentTarget.selectionStart = this.beforePosition;
         e.currentTarget.selectionEnd = this.beforePosition;
