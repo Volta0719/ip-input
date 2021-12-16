@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: fanjf
- * @LastEditTime: 2021-12-16 11:00:26
+ * @LastEditTime: 2021-12-16 14:28:37
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -37,7 +37,7 @@ export default {
     return {
       blurIndex: 0, //record the last blur input
       isCodeFoucus: false, // is the code to foucs the input
-      shouldLockKeyupEvent: false,
+      // shouldLockKeyupEvent: false,
       shouldRemoveText: "",
       ip: [{ value: 0 }, { value: 0 }, { value: 0 }, { value: 0 }],
       firstFlag: [
@@ -47,6 +47,7 @@ export default {
         { start: true, end: true },
       ],
       prenentKeycode: "", //Record a Keyboard key[code] When In chinese input method,the Peroid trigger twice pressKey() method
+      beforePosition: 0,
     };
   },
   components: {
@@ -83,8 +84,13 @@ export default {
             new RegExp(this.shouldRemoveText, "g"),
             ""
           );
-          this.shouldLockKeyupEvent = false;
+          // this.shouldLockKeyupEvent = false;
           this.shouldRemoveText = "";
+          this.$nextTick(() => {
+            let currentEvent = this.$refs.ipInput[index].$el;
+            currentEvent.selectionStart = this.beforePosition;
+            currentEvent.selectionEnd = this.beforePosition;
+          });
         } else {
           console.error(`we didn't match the text in ${index} value😅`);
         }
@@ -188,14 +194,19 @@ export default {
       }
     },
     compositionstart(e, index) {
+      this.beforePosition = e.currentTarget.selectionStart;
       this.shouldLockKeyupEvent = true;
     },
     compositionend(e, index) {
       let len = this.ip[index].value.toString().length;
       this.shouldRemoveText = e.data.substring(0, 3 - len);
+      if (!this.shouldRemoveText) {
+        e.currentTarget.selectionStart = this.beforePosition;
+        e.currentTarget.selectionEnd = this.beforePosition;
+      }
     },
     pressKey(e, index, item) {
-      if (this.shouldLockKeyupEvent) return;
+      // if (this.shouldLockKeyupEvent) return;
       if (this.prenentKeycode === e.code) return;
       switch (e.key) {
         case "Backspace":
@@ -224,7 +235,6 @@ export default {
             break;
           }
         case "ArrowRight":
-          console.log("ArrowRight");
           if (item.value.toString().length === e.currentTarget.selectionStart) {
             if (!this.firstFlag[index].end) {
               this.isCodeFoucus = true;
