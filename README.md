@@ -1,10 +1,18 @@
+<!--
+ * @Author: fanjf
+ * @Date: 2021-12-16 09:13:14
+ * @LastEditTime: 2021-12-16 10:46:23
+ * @LastEditors: fanjf
+ * @FilePath: \ip-input\README.md
+ * @Description: 
+-->
 # ip-input
 
 Imitation of Microsoft IP input box
 
 # Feature
 
-Imitation of Microsoft IP input box,Depends on the vue2,Using the `Ant design vue`'s components 【`<a-input>`】.
+Imitation of Microsoft IP input box,Depends on the vue2,Using the [Ant Design vue(1.7.8)](https://www.antdv.com/components/input-cn/)'s components 【`<a-input>`】.
 
 * The mouse cursor moves in turn when press Arrow key
 * Unable to enter characters other than numbers

@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: fanjf
- * @LastEditTime: 2021-12-16 10:30:04
+ * @LastEditTime: 2021-12-16 11:00:26
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -206,10 +206,13 @@ export default {
               this.$refs.ipInput[index === 0 ? 3 : index - 1].focus();
             } else {
               this.firstFlag[index].start = false;
+              this.firstFlag[index].end =
+                item.value.toString().length !== e.currentTarget.selectionStart;
             }
           } else {
             this.firstFlag[index].start = true;
-            this.firstFlag[index].end = true;
+            this.firstFlag[index].end =
+              item.value.toString().length !== e.currentTarget.selectionStart;
           }
           break;
         // case "Enter":
