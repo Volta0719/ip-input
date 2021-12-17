@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: fanjf
- * @LastEditTime: 2021-12-16 17:07:45
+ * @LastEditTime: 2021-12-17 15:03:07
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     changeIp(e, index) {
-      console.log("changeIp", e);
+      // console.log("changeIp", e);
       if (this.shouldRemoveText) {
         const { value } = e.currentTarget;
         const iindex = value.indexOf(this.shouldRemoveText);
@@ -93,7 +93,7 @@ export default {
             currentEvent.selectionEnd = this.beforePosition;
           });
         } else {
-          console.error(`we didn't match the text in ${index} value😅`);
+          console.error(`we didn't match the text[${this.shouldRemoveText}] in ${index} value😅`);
         }
       } else {
         if (e.currentTarget.selectionStart === 3) {
@@ -163,7 +163,7 @@ export default {
     },
     blurInput(e, index) {
       //   const value
-      console.log("blurInput", e);
+      // console.log("blurInput", e);
       const { value } = e.currentTarget;
       if (+value > 255) {
         this.ip[index].value = 255;
@@ -195,15 +195,15 @@ export default {
       }
     },
     compositionstart(e, index) {
-      console.log("compositionstart", e);
+      // console.log("compositionstart", e);
       this.beforePosition = e.currentTarget.selectionStart;
       this.shouldLockKeyupEvent = true;
     },
     compositionend(e, index) {
-      console.log("compositionend", e);
+      // console.log("compositionend", e);
       let len = this.ip[index].value.toString().length;
       this.shouldRemoveText = e.data.substring(0, 3 - len);
-      console.log("this.shouldRemoveText", this.shouldRemoveText);
+      // console.log("this.shouldRemoveText", this.shouldRemoveText);
       if (!this.shouldRemoveText) {
         e.currentTarget.selectionStart = this.beforePosition;
         e.currentTarget.selectionEnd = this.beforePosition;
