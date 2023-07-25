@@ -78,7 +78,7 @@ components:{
 
 # Source Code
 
-[24min/ip-input: Imitation of Microsoft IP input box (github.com)](https://github.com/24min/ip-input)
+[Volta0719/ip-input: Imitation of Microsoft IP input box (github.com)](https://github.com/Volta0719/ip-input)
 
 # Online Example
 
