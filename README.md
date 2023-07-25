@@ -82,4 +82,4 @@ components:{
 
 # Online Example
 
-[fan-ip-input (24min.github.io)](https://24min.github.io/ip-input/dist/)
+[fan-ip-input (volta0719.github.io)](https://volta0719.github.io/ip-input/dist/)
