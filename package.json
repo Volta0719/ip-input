@@ -15,15 +15,15 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/24min/ip-input"
+        "url": "https://github.com/Volta0719/ip-input"
     },
     "bugs": {
-        "url": "https://github.com/24min/ip-input/issues"
+        "url": "https://github.com/Volta0719/ip-input/issues"
     },
-    "homepage": "https://24min.github.io/ip-input/dist/",
+    "homepage": "https://volta0719.github.io/ip-input/dist/",
     "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
+        "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+        "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
         "lib": "vue-cli-service build --target lib --name fanIpinput --dest lib src/components/index.js",
         "push": "npm run lib && npm login && npm publish",
         "pages": "git subtree push --prefix dist origin gh-pages"
