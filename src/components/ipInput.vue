@@ -2,7 +2,7 @@
  * @Author: 24min
  * @Date: 2021-12-04 20:06:28
  * @LastEditors: fanjf
- * @LastEditTime: 2021-12-17 15:03:07
+ * @LastEditTime: 2023-07-31 09:32:17
  * @FilePath: \ip-input\src\components\ipInput.vue
  * @note: If it ain't broke, don't fix it.🍤
  * @Description: to bo continued...
@@ -102,7 +102,7 @@ export default {
           this.$refs.ipInput[index === 3 ? 0 : index + 1].focus();
         }
         if (e.currentTarget.selectionStart !== 0) {
-          //https://github.com/24min/ip-input/issues/1
+          //https://github.com/Volta0719/ip-input/issues/1
           this.firstFlag[index].start = true;
         }
         const resultIp = this.ip.map((ip) => ip.value).join(".");
