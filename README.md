@@ -1,7 +1,7 @@
 <!--
  * @Author: fanjf
  * @Date: 2021-12-16 09:13:14
- * @LastEditTime: 2021-12-16 10:46:23
+ * @LastEditTime: 2023-07-31 10:22:29
  * @LastEditors: fanjf
  * @FilePath: \ip-input\README.md
  * @Description: 
@@ -20,6 +20,7 @@ Imitation of Microsoft IP input box,Depends on the vue2,Using the [Ant Design vu
 * Automatically focus to the next input box when the number in the input box is 3 digits
 * Numbers above 255 are converted to 255 when out of focus
 * When the mouse cursor is at the end of the input, press the period key to jump to the next input box
+* Support for pasting
 * May be more...
 
 # How to use
